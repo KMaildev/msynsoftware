@@ -147,8 +147,8 @@
                                             <div class="dropdown-menu">
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('contract.edit', $contract->id) }}">
-                                                    Labour
+                                                    href="{{ route('labour_create_view', $contract->id) }}">
+                                                    Labour Management
                                                 </a>
 
                                                 <a class="dropdown-item"

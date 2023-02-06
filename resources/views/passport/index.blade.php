@@ -52,13 +52,26 @@
                             </div>
 
                             <div class="card-header-elements ms-2">
-                                <a href="{{ route('passport.create') }}"
-                                    class="dt-button create-new btn btn-primary btn-sm">
-                                    <span>
-                                        <i class="bx bx-plus me-sm-2"></i>
-                                        <span class="d-none d-sm-inline-block">Create</span>
-                                    </span>
-                                </a>
+
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" style="">
+                                        <li>
+                                            <a href="{{ route('passport.create') }}" class="dropdown-item">
+                                                Create
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ route('passport_export') }}" class="dropdown-item">
+                                                Export Excel
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,6 +166,7 @@
                                     </td>
 
                                     <td>
+                                        {{ $passport->labour_management_table->overseas_agency_table->company_name ?? '' }}
                                     </td>
 
                                     <td class="text-center">

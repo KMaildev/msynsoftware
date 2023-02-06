@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportPassport;
 use App\Http\Requests\StorePassport;
 use App\Http\Requests\UpdatePassport;
 use App\Models\AgentList;
 use App\Models\Passport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PassportController extends Controller
 {
@@ -174,5 +176,13 @@ class PassportController extends Controller
         $Passport->reject_reason = '';
         $Passport->update();
         return redirect()->back()->with('success', 'Updated successfully.');
+    }
+
+
+    public function passportExport()
+    {
+        $passports = Passport::where('reject_status', NULL)
+            ->get();
+        return Excel::download(new ExportPassport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

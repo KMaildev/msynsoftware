@@ -46,3 +46,11 @@
     </button>
 </div> -->
 @endif
+
+@if (count($errors) > 0)
+    <div class="alert alert-danger alert-dismissible">
+        @foreach ($errors->all() as $error)
+            {{ $error }} <br>
+        @endforeach
+    </div>
+@endif

@@ -76,7 +76,7 @@
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('home') }}" class="menu-link">
+                <a href="{{ route('elfinder.index') }}" class="menu-link">
                     <i class="menu-icon fa-solid fa-folder"></i>
                     File Manager
                 </a>

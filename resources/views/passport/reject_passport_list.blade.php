@@ -186,15 +186,24 @@
                                                 Action
                                             </button>
                                             <div class="dropdown-menu">
+
                                                 <a class="dropdown-item"
                                                     href="{{ route('passport.edit', $passport->id) }}">
                                                     Edit & OWIC
                                                 </a>
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('reject_passport', $passport->id) }}">
-                                                    Reject
+                                                    href="{{ route('cancel_reject_passport', $passport->id) }}">
+                                                    Cancel (Reject)
                                                 </a>
+
+                                                <form action="{{ route('passport.destroy', $passport->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="dropdown-item del_confirm"
+                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>

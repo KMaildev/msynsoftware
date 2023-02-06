@@ -164,4 +164,15 @@ class PassportController extends Controller
 
         return view('passport.reject_passport_list', compact('agent_lists', 'passports', 'total_passports'));
     }
+
+
+    public function cancelRejectPassport($id)
+    {
+        $Passport = Passport::findOrFail($id);
+        $Passport->reject_status = NULL;
+        $Passport->reject_date = '';
+        $Passport->reject_reason = '';
+        $Passport->update();
+        return redirect()->back()->with('success', 'Updated successfully.');
+    }
 }

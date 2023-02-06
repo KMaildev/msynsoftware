@@ -6,11 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Dashboard - Analytics | Frest - Bootstrap Admin Template</title>
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
-    <meta name="keywords"
-        content="dashboard, bootstrap 5 dashboard, bootstrap 5 admin, bootstrap 5 design, bootstrap 5">
-    <link rel="canonical" href="https://1.envato.market/frest_admin">
+    <title>MSYN</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <link rel="canonical" href="">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -36,11 +35,12 @@
 
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
+    {{-- <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script> --}}
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
     <link rel="stylesheet" href="https://skgroupmm.com/css/table.css" />
     <link rel="stylesheet" href="https://skgroupmm.com/css/scrollbar.css" />
+
 </head>
 <style>
     .tbbg {
@@ -79,10 +79,34 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
-
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert2/sweet-alert.init.js') }}"></script>
+
 
     @yield('script')
+    <script>
+        $('.del_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            event.preventDefault();
+            Swal.fire({
+                text: "Are you sure you want to delete this record?",
+                showCancelButton: true,
+                customClass: {
+                    confirmButton: 'btn btn-primary me-3',
+                    cancelButton: 'btn btn-label-secondary'
+                },
+                buttonsStyling: false,
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                console.log(willDelete.value);
+                if (willDelete.value === true) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

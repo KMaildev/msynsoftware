@@ -6,15 +6,20 @@
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">
-                            Passport Lists
+                            Demand Lists
                         </h5>
                         <div class="card-title-elements ms-auto">
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <input type="date" class="form-control form-control-sm" name="from_date" />
-                                        <input type="date" class="form-control form-control-sm" name="to_date" />
+                                        <span class="input-group-text" id="basic-addon1">
+                                            Search by date
+                                        </span>
+                                        <input type="text" class="form-control form-control-sm" name="from_date"
+                                            placeholder="1.1.2023" style="width: 100px;" />
+                                        <input type="text" class="form-control form-control-sm" name="to_date"
+                                            placeholder="31.1.2023" style="width: 100px;" />
                                         <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
                                             value="Search">
                                     </div>
@@ -22,15 +27,34 @@
                             </div>
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="agent_list_id" id="" class="form-control form-control-sm">
+                                        <select name="office_id" id="" class="form-control" style="width: 200px;">
                                             <option value="">
-                                                --Select Agent--
+                                                Local Company
                                             </option>
-                                            @foreach ($agent_lists as $agent_list)
-                                                <option value="{{ $agent_list->id ?? '' }}">
-                                                    {{ $agent_list->name ?? '' }}
+                                            @foreach ($offices as $office)
+                                                <option value="{{ $office->id ?? '' }}">
+                                                    {{ $office->name ?? '' }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <input type="submit" class="dt-button create-new btn btn-primary" value="Search">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="card-header-elements ms-2">
+                                <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
+                                    <div class="input-group">
+                                        <select name="overseas_agencie_id" id="" class="form-control"
+                                            style="width: 200px;">
+                                            <option value="">
+                                                --Oversea Agency Company--
+                                            </option>
+                                            @foreach ($overseas_agencies as $overseas_agencie)
+                                                <option value="{{ $overseas_agencie->id ?? '' }}">
+                                                    {{ $overseas_agencie->company_name ?? '' }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -40,20 +64,8 @@
                                 </form>
                             </div>
 
-                            <div class="card-header-elements ms-2">
-                                <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm" placeholder="Search"
-                                            name="search" />
-                                        <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
-                                            value="Search">
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="card-header-elements ms-2">
-                                <a href="{{ route('passport.create') }}"
-                                    class="dt-button create-new btn btn-primary btn-sm">
+                            <div class="card-header-elements  ms-2">
+                                <a href="{{ route('demand.create') }}" class="dt-button create-new btn btn-primary">
                                     <span>
                                         <i class="bx bx-plus me-sm-2"></i>
                                         <span class="d-none d-sm-inline-block">Create</span>
@@ -64,11 +76,6 @@
                     </div>
                 </div>
 
-                <span style="margin: 2px; font-weight: bold;">
-                    Total Passport: {{ $total_passports }}
-                    <br>
-                    Result: {{ count($passports) }}
-                </span>
                 <div class="table-responsive text-nowrap rowheaders table-scroll" role="region"
                     aria-labelledby="HeadersCol" tabindex="0">
                     <table class="table table-bordered main-table">
@@ -77,127 +84,111 @@
                                 <th class="text-center text-white" style="width: 1%; background-color: #296166;">
                                     #
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Name
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    M/F
+                                    Oversea Company
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    NRC
+                                    Date
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Father Name
+                                    Male
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Date of Birth
+                                    Femal
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Address
+                                    Total
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Overseas Company
+                                    Balance Male
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Passport No
+                                    Balance Female
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Date of Passport
+                                    Balance Total
                                 </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    OWIC
+                                    Remark
                                 </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Place of Passport
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Phone No
-                                </th>
-                                <th class="text-center text-white" style="background-color: #296166;">
-                                    Agent Name
-                                </th>
+
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($passports as $key => $passport)
+                            @foreach ($demands as $key => $demand)
                                 <tr>
-                                    <td class="text-center">
+                                    <td>
                                         {{ $key + 1 }}
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->name ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ ucfirst($passport->gender ?? '') }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->nrc ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->father_name ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->date_of_birth ?? '' }}
-                                    </td>
-
-                                    <td class="text-center">
-                                        {{ $passport->address ?? '' }}
+                                    <td>
+                                        {{ $demand->office_table->name ?? '' }}
                                     </td>
 
                                     <td>
+                                        {{ $demand->overseas_agencies_table->company_name ?? '' }}
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->passport ?? '' }}
+                                    <td style="text-align: center;">
+                                        {{ $demand->demand_date }}
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->passport_date ?? '' }}
+                                    <td style="text-align: center;">
+                                        @php
+                                            $demand_male = $demand->male ?? 0;
+                                            echo $demand_male;
+                                            $demandMaleTotal[] = $demand_male;
+                                        @endphp
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->owic ?? '' }}
+                                    <td style="text-align: center;">
+                                        @php
+                                            $demand_female = $demand->female ?? 0;
+                                            echo $demand_female;
+                                            $demandFemaleTotal[] = $demand_female;
+                                        @endphp
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->place_of_passport ?? '' }}
+                                    <td style="text-align: center;">
+                                        @php
+                                            $demald_total = $demand_male + $demand_female;
+                                            echo $demald_total;
+                                        @endphp
                                     </td>
 
-                                    <td class="text-center">
-                                        {{ $passport->phone ?? '' }}
-                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
-                                    <td class="text-center">
-                                        {{ $passport->agent_list_table->name ?? '' }}
-                                    </td>
-
-                                    <td style="text-align: center">
+                                    <td style="text-align: center;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Action
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item"
-                                                    href="{{ route('passport.edit', $passport->id) }}">
-                                                    Edit & OWIC
+                                                <a class="dropdown-item" href="{{ route('demand.edit', $demand->id) }}">
+                                                    Edit
                                                 </a>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('reject_passport', $passport->id) }}">
-                                                    Reject
-                                                </a>
-
-                                                <form action="{{ route('passport.destroy', $passport->id) }}"
-                                                    method="POST">
+                                                <form action="{{ route('demand.destroy', $demand->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="dropdown-item del_confirm"
@@ -210,7 +201,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $passports->withQueryString()->links() }}
                 </div>
             </div>
         </div>

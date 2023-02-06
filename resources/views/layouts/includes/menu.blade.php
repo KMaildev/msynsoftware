@@ -55,14 +55,14 @@
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('home') }}" class="menu-link">
+                <a href="{{ route('demand.index') }}" class="menu-link">
                     <i class="menu-icon fa fa-file"></i>
                     Demand
                 </a>
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('home') }}" class="menu-link">
+                <a href="{{ route('contract.index') }}" class="menu-link">
                     <i class="menu-icon fa fa-file-pen"></i>
                     Contract
                 </a>

@@ -41,14 +41,14 @@
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('home') }}" class="menu-link">
+                <a href="{{ route('passport.index') }}" class="menu-link">
                     <i class="menu-icon fa-solid fa-passport"></i>
                     Passport
                 </a>
             </li>
 
             <li class="menu-item">
-                <a href="{{ route('home') }}" class="menu-link">
+                <a href="{{ route('reject_passport_list') }}" class="menu-link">
                     <i class="menu-icon fa fa-x"></i>
                     Reject Passport
                 </a>

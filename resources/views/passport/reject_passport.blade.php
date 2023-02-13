@@ -260,7 +260,7 @@
                                 <input type="text"
                                     class="form-control @error('reject_reason') form-control-danger @enderror"
                                     name="reject_reason" value="{{ $passport->reject_reason ?? '' }}"
-                                    placeholder="OWIC Reason">
+                                    placeholder="Reject Reason">
                                 @error('reject_reason')
                                     <div class="form-control-feedback">
                                         {{ $message }}

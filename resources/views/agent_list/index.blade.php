@@ -53,7 +53,7 @@
                                     </td>
 
                                     <td>
-                                        {{ $agent_list->name }}
+                                        {{ strtoupper($agent_list->name ?? '') }} 
                                     </td>
 
                                     <td>

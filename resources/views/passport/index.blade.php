@@ -30,7 +30,7 @@
                                             </option>
                                             @foreach ($agent_lists as $agent_list)
                                                 <option value="{{ $agent_list->id ?? '' }}">
-                                                    {{ $agent_list->name ?? '' }}
+                                                    {{ strtoupper($agent_list->name ?? '') }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -190,7 +190,7 @@
                                     </td>
 
                                     <td class="text-center">
-                                        {{ $passport->agent_list_table->name ?? '' }}
+                                        {{ strtoupper($passport->agent_list_table->name ?? '') }}
                                     </td>
 
                                     <td style="text-align: center">

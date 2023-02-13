@@ -16,13 +16,15 @@ class LabourManagementController extends Controller
     {
         $contract = Contract::findOrFail($id);
 
-        $passports = Passport::whereHas('labour_management_table', function ($q) use ($id) {
-            $q->where('contract_id', $id);
-        })->paginate(100);
+        $passports = Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('contract_id', $id);
+            })->paginate(100);
 
-        $total_passports =  Passport::whereHas('labour_management_table', function ($q) use ($id) {
-            $q->where('contract_id', $id);
-        })->count();
+        $total_passports =  Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('contract_id', $id);
+            })->count();
 
         return view('labour_management.create_View', compact('contract', 'passports', 'total_passports'));
     }
@@ -34,6 +36,14 @@ class LabourManagementController extends Controller
         $overseas_agencies_id = $request->overseas_agencies_id;
 
         Excel::import(new ImportLabourManagement($demand_id, $contract_id, $overseas_agencies_id), request()->file('labour_lists'));
+        return redirect()->back()->with('success', 'Your processing has been completed.');
+    }
+
+
+    public function destroy($id)
+    {
+        $passport = LabourManagement::findOrFail($id);
+        $passport->delete();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 }

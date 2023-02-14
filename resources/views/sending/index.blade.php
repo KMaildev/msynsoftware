@@ -6,12 +6,12 @@
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">
-                            Contact Lists
+                            Sending Lists
                         </h5>
                         <div class="card-title-elements ms-auto">
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('contract.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('sending.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon1">
                                             Search by date
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('contract.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('sending.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <select name="office_id" id="" class="form-control" style="width: 200px;">
                                             <option value="">
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="card-header-elements ms-2">
-                                <form action="{{ route('contract.index') }}" method="get" autocomplete="off">
+                                <form action="{{ route('sending.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <select name="overseas_agencie_id" id="" class="form-control"
                                             style="width: 200px;">
@@ -100,7 +100,7 @@
                                     Total
                                 </th>
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Contract Date
+                                    Sending Date
                                 </th>
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Action
@@ -108,34 +108,34 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($contracts as $key => $contract)
+                            @foreach ($sendings as $key => $sending)
                                 <tr>
                                     <td>
                                         {{ $key + 1 }}
                                     </td>
 
                                     <td>
-                                        {{ $contract->demands_table->office_table->name ?? '' }}
+                                        {{ $sending->demands_table->office_table->name ?? '' }}
                                     </td>
 
                                     <td>
-                                        {{ $contract->demands_table->overseas_agencies_table->company_name ?? '' }}
+                                        {{ $sending->demands_table->overseas_agencies_table->company_name ?? '' }}
                                     </td>
 
                                     <td style="text-align: right; font-weight: bold">
-                                        {{ number_format($contract->contract_male) }}
+                                        {{ number_format($sending->sending_male) }}
                                     </td>
 
                                     <td style="text-align: right; font-weight: bold">
-                                        {{ number_format($contract->contract_female) }}
+                                        {{ number_format($sending->sending_female) }}
                                     </td>
 
                                     <td style="text-align: right; font-weight: bold">
-                                        {{ number_format($contract->contract_male + $contract->contract_female) }}
+                                        {{ number_format($sending->sending_male + $sending->sending_female) }}
                                     </td>
 
                                     <td style="text-align: center; font-weight: bold">
-                                        {{ $contract->contract_date }}
+                                        {{ $sending->sending_date }}
                                     </td>
 
                                     <td style="text-align: center;">
@@ -147,27 +147,14 @@
                                             <div class="dropdown-menu">
 
                                                 <a class="dropdown-item"
-                                                    href="{{ route('labour_create_view', $contract->id) }}">
-                                                    Contract Labours
+                                                    href="{{ route('sending_labour', $sending->id) }}">
+                                                    Sending Labours
                                                 </a>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('sending_create', $contract->id) }}">
-                                                    Sending
-                                                </a>
-
-                                                <a class="dropdown-item"
-                                                    href="{{ route('contract.edit', $contract->id) }}">
+                                                <a class="dropdown-item" href="{{ route('sending.edit', $sending->id) }}">
                                                     Edit
                                                 </a>
 
-                                                <form action="{{ route('contract.destroy', $contract->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="dropdown-item del_confirm"
-                                                        id="confirm-text" data-toggle="tooltip">Delete</button>
-                                                </form>
                                             </div>
                                         </div>
                                     </td>
@@ -177,13 +164,13 @@
                         <tr>
                             <td colspan="3">Total</td>
                             <td style="text-align: right;">
-                                {{ $contracts->sum('contract_male') }}
+                                {{ $sendings->sum('sending_male') }}
                             </td>
                             <td style="text-align: right;">
-                                {{ $contracts->sum('contract_female') }}
+                                {{ $sendings->sum('sending_female') }}
                             </td>
                             <td style="text-align: right;">
-                                {{ $contracts->sum('contract_male') + $contracts->sum('contract_female') }}
+                                {{ $sendings->sum('sending_male') + $sendings->sum('sending_female') }}
                             </td>
                             <td colspan="3"></td>
                         </tr>

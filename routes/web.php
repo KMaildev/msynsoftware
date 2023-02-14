@@ -7,6 +7,7 @@ use App\Http\Controllers\DemandController;
 use App\Http\Controllers\LabourManagementController;
 use App\Http\Controllers\OverseasAgentController;
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\SendingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,7 @@ Route::get('demand_ajax/{id}', [DemandController::class, 'demandAjax'])->name('d
 Route::resource('contract', ContractController::class);
 Route::resource('labour_management', LabourManagementController::class);
 Route::get('labour_create_view/{id}', [LabourManagementController::class, 'createAndView'])->name('labour_create_view');
+Route::resource('sending', SendingController::class);
+Route::get('sending_create/{id}', [SendingController::class, 'create'])->name('sending_create');
+Route::get('sending_labour/{id}', [LabourManagementController::class, 'sendingLabour'])->name('sending_labour');
+Route::post('remove_from_sending/{id}', [LabourManagementController::class, 'removeFromSending'])->name('remove_from_sending');

@@ -64,14 +64,6 @@
                                 </form>
                             </div>
 
-                            <div class="card-header-elements ms-2">
-                                <a href="{{ route('contract.create') }}" class="dt-button create-new btn btn-primary">
-                                    <span>
-                                        <i class="bx bx-plus me-sm-2"></i>
-                                        <span class="d-none d-sm-inline-block">Create</span>
-                                    </span>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>

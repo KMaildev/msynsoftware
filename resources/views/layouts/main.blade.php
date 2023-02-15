@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="https://skgroupmm.com/css/table.css" />
     <link rel="stylesheet" href="https://skgroupmm.com/css/scrollbar.css" />
 
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
+
 </head>
 <style>
     .tbbg {
@@ -83,6 +85,9 @@
     <script src="{{ asset('assets/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('assets/sweetalert2/sweet-alert.init.js') }}"></script>
 
+    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
+    <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
 
     @yield('script')
     <script>

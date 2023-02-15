@@ -10,7 +10,7 @@
                         </h5>
                         <div class="card-title-elements ms-auto">
 
-                            <div class="card-header-elements ms-2">
+                            <div class="card-header-elements ms-2" hidden>
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <input type="date" class="form-control form-control-sm" name="from_date" />
@@ -43,7 +43,7 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm" placeholder="Search"
+                                        <input type="text" class="form-control form-control-sm" placeholder="NRC, PASSPORT, NAME, ETC.."
                                             name="search" />
                                         <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
                                             value="Search">

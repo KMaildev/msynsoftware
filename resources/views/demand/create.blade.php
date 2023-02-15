@@ -185,9 +185,9 @@
                             </label>
                             <div class="col-md-9">
                                 <input type="text"
-                                    class="form-control @error('demand_id') form-control-danger @enderror"
-                                    name="demand_id" placeholder="Demand Number">
-                                @error('demand_id')
+                                    class="form-control @error('demand_number') form-control-danger @enderror"
+                                    name="demand_number" placeholder="Demand Number">
+                                @error('demand_number')
                                     <div class="form-control-feedback" style="color: red;">
                                         {{ $message }}
                                     </div>

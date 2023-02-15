@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2023 at 06:56 AM
+-- Generation Time: Feb 15, 2023 at 05:38 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -69,13 +69,6 @@ CREATE TABLE `contracts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `contracts`
---
-
-INSERT INTO `contracts` (`id`, `contract_date`, `contract_male`, `contract_female`, `remark`, `demand_id`, `created_at`, `updated_at`) VALUES
-(1, '1.1.2023', 10, 10, 'Contract', 1, '2023-02-09 19:03:45', '2023-02-09 19:03:45');
-
 -- --------------------------------------------------------
 
 --
@@ -121,13 +114,6 @@ CREATE TABLE `demands` (
   `demand_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `demands`
---
-
-INSERT INTO `demands` (`id`, `company_name`, `countrie_id`, `overseas_agencie_id`, `male`, `female`, `demand_date`, `cabinet_date`, `issue_date`, `issue_number`, `created_at`, `updated_at`, `demand_status`, `demand_id`) VALUES
-(1, '1', '1', '17', '10', '10', '1.1.2023', '1.1.2023', '1.1.2023', '1.1.2023', '2023-02-09 19:03:17', '2023-02-09 19:03:17', 'new_demand', '1.1.2023');
-
 -- --------------------------------------------------------
 
 --
@@ -172,28 +158,6 @@ CREATE TABLE `labour_management` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `sending_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `labour_management`
---
-
-INSERT INTO `labour_management` (`id`, `demand_id`, `contract_id`, `overseas_agencies_id`, `name`, `father_name`, `nrc`, `date_of_birth`, `passport`, `passport_date`, `phone`, `address`, `gender`, `remark`, `place_of_passport`, `owic`, `owic_date`, `created_at`, `updated_at`, `sending_id`) VALUES
-(2, 1, 1, 17, 'CHAN NYEIN AUNG', '', '', '30.9.1996', 'MG 784551', '5.11.2022', '-', 'KYAUNGKONE TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(4, 1, 1, 17, 'HEIN THU AUNG', '', '', '', 'MG 496802', '14.9.2022', '-', 'KAWLIN TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:21:36', NULL),
-(6, 1, 1, 17, 'KHIN YAWAY TUN', 'U TUN TUN SOE', '14/NGA PA TA (N) 230755', '9.1.1999', 'MG 233290', '4.8.2022', '-', 'NGAPUTAW TSP', 'female', 'NEW', 'PATHEIN', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(7, 1, 1, 17, 'THAE HSU MON', 'U THEIN OO', '14/LA PA TA (N) 230526', '9.7.1999', 'MG 234640', '4.8.2022', '-', 'NGAPUTAW TSP', 'female', 'NEW', 'PATHEIN', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(8, 1, 1, 17, 'THET PHYO AUNG', 'U WIN NAING', '14/NGA PA TA (N) 283214', '11.3.2001', 'MG 233292', '4.8.2022', '-', 'NGAPUTAW TSP', 'male', 'NEW', 'PATHEIN', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(9, 1, 1, 17, 'AUNG THU YA TUN', 'U TUN TUN', '14/NGA PA TA (N) 280968', '25.6.2003', 'MG 234639', '4.8.2022', '-', 'NGAPUTAW TSP', 'male', 'NEW', 'PATHEIN', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(10, 1, 1, 17, 'ZAW ZAW', '', '', '1.1.1996', 'MG 784554', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(11, 1, 1, 17, 'AUNG AUNG', '', '', '15.6.1986', 'MG 784553', '5.11.2022', '-', 'MYINGYAN TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(12, 1, 1, 17, 'AUNG PIKE', '', '', '2.1.1978', 'MG 784550', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(13, 1, 1, 17, 'MIN MIN OO', '', '', '18.12.1987', 'MG 786767', '5.11.2022', '-', 'MAHLAING TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(14, 1, 1, 17, 'BO GYI', '', '', '15.5.1987', 'MG 786651', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(15, 1, 1, 17, 'HTET LIN', '', '', '8.7.2003', 'MG 784548', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(16, 1, 1, 17, 'SI THU MOE', '', '', '10.3.1998', 'MG 784555', '5.11.2022', '-', 'KYAUKSE TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(17, 1, 1, 17, 'THAN ZAW WIN', '', '', '16.10.1992', 'MG 784556', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(18, 1, 1, 17, 'KHAING ZIN PHYO', '', '', '25.3.1998', 'MG 786768', '5.11.2022', '-', 'TAUNNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1'),
-(19, 1, 1, 17, 'THEIN MIN OO', '', '', '19.12.1982', 'MG 784547', '5.11.2022', '-', 'TAUNGTHA TSP', 'male', 'NEW', 'YANGON', '', '', '2023-02-09 19:09:13', '2023-02-13 23:08:15', '1');
 
 -- --------------------------------------------------------
 
@@ -258,7 +222,7 @@ INSERT INTO `offices` (`id`, `name`, `location`, `created_at`, `updated_at`) VAL
 --
 
 CREATE TABLE `overseas_agencies` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL,
   `company_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type_of_company` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `company_phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -275,30 +239,30 @@ CREATE TABLE `overseas_agencies` (
 --
 
 INSERT INTO `overseas_agencies` (`id`, `company_name`, `type_of_company`, `company_phone`, `company_email`, `company_address`, `countrie_id`, `created_at`, `updated_at`, `contact`) VALUES
-(16, 'SSK Kolakarn Co.,Ltd (14741)', 'ကားအပိုပစ္စည်းများထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:12:15', '2022-08-23 23:12:15', 'Choose N Matchs'),
-(17, 'SSK Kolakarn Co.,Ltd (14742)', 'ကားအပိုပစ္စည်းများထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:17:27', '2022-08-23 23:29:17', 'Choose N Matchs'),
-(18, 'SSK Stamping Co.,Ltd', 'မော်တော်ကား/ဆိုင်ကယ်အင်ဂျင်ပစ္စည်းထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:19:23', '2022-08-23 23:19:23', 'Choose N Matchs'),
-(19, 'Sino-Thai Engineering and Construction Public Co.,Ltd', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-23 23:20:49', '2022-08-23 23:20:49', 'Choose N Matchs'),
-(20, 'Kuiburi Fruit Canning Co.,Ltd', 'နာနတ်သီးစက်ရုံလုပ်ငန်း', NULL, NULL, 'Ranong', '1', '2022-08-23 23:22:16', '2022-08-23 23:22:16', 'Choose N Matchs'),
-(21, 'T.C.P Industry Co.,Ltd', 'စက္ကူစက်ရုံလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-24 20:59:00', '2022-08-26 23:18:06', 'P.C 80 And Service Company Limited'),
-(22, 'Samco Standard Auto Manufacturing Co.,Ltd', 'ကားပစ္စည်းစက်ရုံ လုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-26 23:22:08', '2022-08-26 23:22:08', 'P.C 80  And Service Company Limited'),
-(23, 'H.R.T.Furniture Co.,Ltd', 'ပရိဘောဂ လုပ်ငန်း', NULL, NULL, 'Surat Thani', '1', '2022-08-26 23:30:17', '2022-08-26 23:30:17', 'J.U.N. Worker Company Limited'),
-(24, 'T.S.P Wood Co.,Ltd', 'သစ်စက် လုပ်ငန်း', NULL, NULL, 'Surat Thani', '1', '2022-08-27 00:01:54', '2022-08-27 00:01:54', 'J.U.N Worker Company Limited'),
-(25, 'Quality Coils Industries (P.B) Co.,Ltd', 'ခြင်ဆေးခွေထုတ်လုပ်ဖြန့်ဖြူးသည့် လုပ်ငန်း', NULL, NULL, 'Songkhla', '1', '2022-08-27 00:15:05', '2022-08-27 00:15:05', 'Chamnan (2013) Company Limited'),
-(26, 'Choksuree Fresh Part.,Ltd', 'အသီးအနှံမျိုးစုံ ထုတ်လုပ်ဖြန့်ဖြူးသည့် လုပ်ငန်း', NULL, NULL, 'Nokhon Si Thammarat', '1', '2022-08-27 00:19:05', '2022-08-27 00:25:45', 'Chamnan (2013) Company Limited'),
-(27, 'Chinnawarn Yala Construction Ltd.,Part', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'Songkhla', '1', '2022-08-27 00:21:11', '2022-08-27 00:21:11', 'Chamnan (2013) Company Limited'),
-(28, 'E&C Co.,Ltd', 'လျှပ်စစ်မီးတပ်ဆင်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-27 00:23:04', '2022-08-27 00:23:04', 'P.C 80 And Service Company Limited'),
-(29, 'Auto Metal Part Co.,Ltd', 'ကား /ဆိုင်ကယ်အပိုပစ္စည်းထုတ်လုပ်ခြင်း လုပ်ငန်း', NULL, NULL, 'Chacheongsao', '1', '2022-08-27 00:24:58', '2022-08-27 00:24:58', 'Choose N Matchs Co.,Ltd'),
-(30, 'C.A.S.H Autoparts Co.,Ltd', 'ကားအပိုပစ္စည်းထုတ်လုပ်ခြင်း လုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-27 01:40:01', '2022-08-27 01:40:01', 'Choose N Matchs Co.,Ltd'),
-(31, 'ADDA FOOTWEAR (THAILAND) CO.,LTD', 'ဖိနပ်စက်ရုံလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-09-23 04:15:46', '2022-09-23 04:15:46', 'ဦးတာ , ကိုဇော်'),
-(32, 'Sino-Thai Engineering & Construction Public Co.,Ltd', 'Construction', NULL, NULL, 'Bangkok', '1', '2022-11-30 05:35:52', '2022-12-02 23:15:41', 'Choose N Matchs'),
-(33, 'S.KIAN SENG SDN BHD', 'ပရိဘောဂပစ္စည်းများ ထုတ်လုပ်သည့် လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:03:10', '2022-12-14 21:03:10', 'MR.LEE'),
-(34, 'FUKU METAL FINISHING SDN BHD', 'သတ္ကုအရောင်တင်လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:32:38', '2022-12-14 21:34:43', 'Mr.LEE'),
-(35, 'NARDI MANUFACTURING', 'ထိုင်ခုံနှင့်စားပွဲ သံဖရိန်များထုတ်လုပ်သည့်လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:57:08', '2022-12-14 21:57:08', 'Mr.LEE'),
-(36, 'PROJECT PERMATA JAYA SDN BHD', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'CHERAS, SELANGOR', '2', '2022-12-14 22:04:06', '2022-12-14 22:04:06', 'Mr.LEE'),
-(37, 'GREEN CONCERNS SDN BHD', 'ကားဟိုက်ဒ‌ရောလစ်များတပ်ဆင်သည့်လုပ်ငန်း', NULL, NULL, 'SUNGAI INDAH, SELANGOR', '2', '2022-12-14 22:13:34', '2022-12-14 22:13:34', 'Mr.LEE'),
-(38, 'ACTAN (MALAYSIA) SDN BHD', 'စက္ကူစက်ရုံ', NULL, NULL, 'SELANGOR', '2', '2022-12-14 22:23:44', '2022-12-14 22:23:44', 'KO THAN KYINE'),
-(39, 'GLOBALLINK METAL', 'ဆေးရုံသုံးကုတင်များထုတ်လုပ်သည့်လုပ်ငန်း', NULL, NULL, 'SERI KEMBANGAN, SELANGOR', '2', '2022-12-14 22:31:50', '2022-12-14 22:34:15', 'Mr.LEE');
+(1, 'SSK Kolakarn Co.,Ltd (14741)', 'ကားအပိုပစ္စည်းများထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:12:15', '2022-08-23 23:12:15', 'Choose N Matchs'),
+(2, 'SSK Kolakarn Co.,Ltd (14742)', 'ကားအပိုပစ္စည်းများထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:17:27', '2022-08-23 23:29:17', 'Choose N Matchs'),
+(3, 'SSK Stamping Co.,Ltd', 'မော်တော်ကား/ဆိုင်ကယ်အင်ဂျင်ပစ္စည်းထုတ်လုပ်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-23 23:19:23', '2022-08-23 23:19:23', 'Choose N Matchs'),
+(4, 'Sino-Thai Engineering and Construction Public Co.,Ltd', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-23 23:20:49', '2022-08-23 23:20:49', 'Choose N Matchs'),
+(5, 'Kuiburi Fruit Canning Co.,Ltd', 'နာနတ်သီးစက်ရုံလုပ်ငန်း', NULL, NULL, 'Ranong', '1', '2022-08-23 23:22:16', '2022-08-23 23:22:16', 'Choose N Matchs'),
+(6, 'T.C.P Industry Co.,Ltd', 'စက္ကူစက်ရုံလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-24 20:59:00', '2022-08-26 23:18:06', 'P.C 80 And Service Company Limited'),
+(7, 'Samco Standard Auto Manufacturing Co.,Ltd', 'ကားပစ္စည်းစက်ရုံ လုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-26 23:22:08', '2022-08-26 23:22:08', 'P.C 80  And Service Company Limited'),
+(8, 'H.R.T.Furniture Co.,Ltd', 'ပရိဘောဂ လုပ်ငန်း', NULL, NULL, 'Surat Thani', '1', '2022-08-26 23:30:17', '2022-08-26 23:30:17', 'J.U.N. Worker Company Limited'),
+(9, 'T.S.P Wood Co.,Ltd', 'သစ်စက် လုပ်ငန်း', NULL, NULL, 'Surat Thani', '1', '2022-08-27 00:01:54', '2022-08-27 00:01:54', 'J.U.N Worker Company Limited'),
+(10, 'Quality Coils Industries (P.B) Co.,Ltd', 'ခြင်ဆေးခွေထုတ်လုပ်ဖြန့်ဖြူးသည့် လုပ်ငန်း', NULL, NULL, 'Songkhla', '1', '2022-08-27 00:15:05', '2022-08-27 00:15:05', 'Chamnan (2013) Company Limited'),
+(11, 'Choksuree Fresh Part.,Ltd', 'အသီးအနှံမျိုးစုံ ထုတ်လုပ်ဖြန့်ဖြူးသည့် လုပ်ငန်း', NULL, NULL, 'Nokhon Si Thammarat', '1', '2022-08-27 00:19:05', '2022-08-27 00:25:45', 'Chamnan (2013) Company Limited'),
+(12, 'Chinnawarn Yala Construction Ltd.,Part', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'Songkhla', '1', '2022-08-27 00:21:11', '2022-08-27 00:21:11', 'Chamnan (2013) Company Limited'),
+(13, 'E&C Co.,Ltd', 'လျှပ်စစ်မီးတပ်ဆင်ခြင်းလုပ်ငန်း', NULL, NULL, 'Samutprakan', '1', '2022-08-27 00:23:04', '2022-08-27 00:23:04', 'P.C 80 And Service Company Limited'),
+(14, 'Auto Metal Part Co.,Ltd', 'ကား /ဆိုင်ကယ်အပိုပစ္စည်းထုတ်လုပ်ခြင်း လုပ်ငန်း', NULL, NULL, 'Chacheongsao', '1', '2022-08-27 00:24:58', '2022-08-27 00:24:58', 'Choose N Matchs Co.,Ltd'),
+(15, 'C.A.S.H Autoparts Co.,Ltd', 'ကားအပိုပစ္စည်းထုတ်လုပ်ခြင်း လုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-08-27 01:40:01', '2022-08-27 01:40:01', 'Choose N Matchs Co.,Ltd'),
+(16, 'ADDA FOOTWEAR (THAILAND) CO.,LTD', 'ဖိနပ်စက်ရုံလုပ်ငန်း', NULL, NULL, 'Bangkok', '1', '2022-09-23 04:15:46', '2022-09-23 04:15:46', 'ဦးတာ , ကိုဇော်'),
+(17, 'Sino-Thai Engineering & Construction Public Co.,Ltd', 'Construction', NULL, NULL, 'Bangkok', '1', '2022-11-30 05:35:52', '2022-12-02 23:15:41', 'Choose N Matchs'),
+(18, 'S.KIAN SENG SDN BHD', 'ပရိဘောဂပစ္စည်းများ ထုတ်လုပ်သည့် လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:03:10', '2022-12-14 21:03:10', 'MR.LEE'),
+(19, 'FUKU METAL FINISHING SDN BHD', 'သတ္ကုအရောင်တင်လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:32:38', '2022-12-14 21:34:43', 'Mr.LEE'),
+(20, 'NARDI MANUFACTURING', 'ထိုင်ခုံနှင့်စားပွဲ သံဖရိန်များထုတ်လုပ်သည့်လုပ်ငန်း', NULL, NULL, 'SELANGOR', '2', '2022-12-14 21:57:08', '2022-12-14 21:57:08', 'Mr.LEE'),
+(21, 'PROJECT PERMATA JAYA SDN BHD', 'ဆောက်လုပ်ရေးလုပ်ငန်း', NULL, NULL, 'CHERAS, SELANGOR', '2', '2022-12-14 22:04:06', '2022-12-14 22:04:06', 'Mr.LEE'),
+(22, 'GREEN CONCERNS SDN BHD', 'ကားဟိုက်ဒ‌ရောလစ်များတပ်ဆင်သည့်လုပ်ငန်း', NULL, NULL, 'SUNGAI INDAH, SELANGOR', '2', '2022-12-14 22:13:34', '2022-12-14 22:13:34', 'Mr.LEE'),
+(23, 'ACTAN (MALAYSIA) SDN BHD', 'စက္ကူစက်ရုံ', NULL, NULL, 'SELANGOR', '2', '2022-12-14 22:23:44', '2022-12-14 22:23:44', 'KO THAN KYINE'),
+(24, 'GLOBALLINK METAL', 'ဆေးရုံသုံးကုတင်များထုတ်လုပ်သည့်လုပ်ငန်း', NULL, NULL, 'SERI KEMBANGAN, SELANGOR', '2', '2022-12-14 22:31:50', '2022-12-14 22:34:15', 'Mr.LEE');
 
 -- --------------------------------------------------------
 
@@ -497,13 +461,6 @@ CREATE TABLE `sendings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `sendings`
---
-
-INSERT INTO `sendings` (`id`, `sending_date`, `sending_male`, `sending_female`, `remark`, `demand_id`, `contract_id`, `created_at`, `updated_at`) VALUES
-(1, '1.1.2023', 10, 10, 'Sending', 1, 1, '2023-02-13 23:08:15', '2023-02-13 23:08:15');
-
 -- --------------------------------------------------------
 
 --
@@ -643,7 +600,7 @@ ALTER TABLE `agent_lists`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -655,7 +612,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `demands`
 --
 ALTER TABLE `demands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -667,7 +624,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `labour_management`
 --
 ALTER TABLE `labour_management`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -685,7 +642,7 @@ ALTER TABLE `offices`
 -- AUTO_INCREMENT for table `overseas_agencies`
 --
 ALTER TABLE `overseas_agencies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `passports`
@@ -703,7 +660,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `sendings`
 --
 ALTER TABLE `sendings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

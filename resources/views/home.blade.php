@@ -3,9 +3,9 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
             <h5>
-                System Upgrade Notification
+                Data Analysis Report
             </h5>
-            <div class="col-lg-6 col-md-12 mb-4">
+            <div class="col-lg-12 col-md-12 mb-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="card-title mb-0">Analytics</h5>
@@ -25,7 +25,6 @@
                         <div id="analyticsBarChart"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

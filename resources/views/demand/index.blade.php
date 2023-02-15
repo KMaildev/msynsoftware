@@ -47,8 +47,8 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="overseas_agencie_id" id="" class="form-control"
-                                            style="width: 200px;">
+                                        <select name="overseas_agencie_id"  class="form-control select2"
+                                            style="width: 200px;"  data-allow-clear="false">
                                             <option value="">
                                                 --Oversea Agency Company--
                                             </option>
@@ -198,6 +198,135 @@
                                         </div>
                                     </td>
                                 </tr>
+
+                                {{-- Contact Info  --}}
+                                @php
+                                    $contract_male_total = [];
+                                    $contract_female_total = [];
+                                    $contact_male_female_total = [];
+                                @endphp
+                                @foreach ($demand->contract_list_table as $contract_list)
+                                    <tr style="background-color: #eaedef;">
+                                        <td colspan="3" style="text-align: right;">
+                                            Contract Information
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $contract_list->contract_date ?? '' }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $contract_list->contract_male ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $contract_list->contract_female ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_male = $contract_list->contract_male ?? 0;
+                                                $contract_female = $contract_list->contract_female ?? 0;
+                                                $contact_total = $contract_male + $contract_female;
+                                                echo $contact_total;
+                                                $contract_male_total[] = $contract_male;
+                                                $contract_female_total[] = $contract_female;
+                                                $contact_male_female_total[] = $contact_total;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance M --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_balance_male = $demand_male - $contract_male;
+                                                echo $contract_balance_male;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance F --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_balance_female = $demand_female - $contract_female;
+                                                echo $contract_balance_female;
+                                            @endphp
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_balance_total = $contract_balance_male + $contract_balance_female;
+                                                echo $contract_balance_total;
+                                            @endphp
+                                        </td>
+
+                                        <td colspan="2" style="text-align: center;">
+                                            <span style="font-size: 11px; color: red;">
+                                                {{ $contract_list->remark ?? 0 }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+
+                                {{-- Sending Info  --}}
+                                @foreach ($demand->sendings_list_table as $sendings_list)
+                                    <tr style="background-color: #eaedef;">
+                                        <td colspan="3" style="text-align: right;">
+                                            Sending Information
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $sendings_list->sending_date ?? '' }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $sendings_list->sending_male ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            {{ $sendings_list->sending_female ?? 0 }}
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $sending_male = $sendings_list->sending_male ?? 0;
+                                                $sending_female = $sendings_list->sending_female ?? 0;
+                                                $sending_total = $sending_male + $sending_female;
+                                                echo $sending_total;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance M --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_male_totals = array_sum($contract_male_total);
+                                                $sending_balance_male = $contract_male_totals - $sending_male;
+                                                echo $sending_balance_male;
+                                            @endphp
+                                        </td>
+
+                                        {{-- Balance F --}}
+                                        <td style="text-align: center;">
+                                            @php
+                                                $contract_female_totals = array_sum($contract_female_total);
+                                                $sending_balance_female = $contract_female_totals - $sending_female;
+                                                echo $sending_balance_female;
+                                            @endphp
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            @php
+                                                $sending_balance_total = $sending_balance_male + $sending_balance_female;
+                                                echo $sending_balance_total;
+                                            @endphp
+                                        </td>
+
+                                        <td colspan="2" style="text-align: center;">
+                                            <span style="font-size: 11px; color: red;">
+                                                {{ $sendings_list->remark ?? 0 }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>

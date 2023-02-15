@@ -18,4 +18,14 @@ class Demand extends Model
     {
         return $this->belongsTo(OverseasAgency::class, 'overseas_agencie_id', 'id');
     }
+
+    public function contract_list_table()
+    {
+        return $this->hasMany(Contract::class, 'demand_id', 'id');
+    }
+
+    public function sendings_list_table()
+    {
+        return $this->hasMany(Sending::class, 'demand_id', 'id');
+    }
 }

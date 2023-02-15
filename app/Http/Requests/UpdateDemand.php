@@ -28,7 +28,6 @@ class UpdateDemand extends FormRequest
             'office_id' => 'required',
             'countrie_id' => 'required|not_in:0',
             'overseas_agencie_id' => 'required',
-            'demand_id' => 'required',
             'male' => 'numeric',
             'female' => 'numeric',
         ];

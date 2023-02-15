@@ -10,13 +10,12 @@
                         </h5>
                         <div class="card-title-elements ms-auto">
 
-                            <div class="card-header-elements ms-2" hidden>
+                            <div class="card-header-elements ms-2">
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <input type="date" class="form-control form-control-sm" name="from_date" />
-                                        <input type="date" class="form-control form-control-sm" name="to_date" />
-                                        <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
-                                            value="Search">
+                                        <input type="date" class="form-control" name="from_date" />
+                                        <input type="date" class="form-control" name="to_date" />
+                                        <input type="submit" class="dt-button create-new btn btn-primary" value="Search">
                                     </div>
                                 </form>
                             </div>
@@ -24,7 +23,7 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="agent_list_id" id="" class="form-control form-control-sm">
+                                        <select name="agent_list_id" id="" class="form-control select2">
                                             <option value="">
                                                 --Select Agent--
                                             </option>
@@ -34,8 +33,7 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
-                                            value="Search">
+                                        <input type="submit" class="dt-button create-new btn btn-primary" value="Search">
                                     </div>
                                 </form>
                             </div>
@@ -43,10 +41,9 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('passport.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm" placeholder="NRC, PASSPORT, NAME, ETC.."
+                                        <input type="text" class="form-control" placeholder="NRC, PASSPORT, NAME, ETC.."
                                             name="search" />
-                                        <input type="submit" class="dt-button create-new btn btn-primary btn-sm"
-                                            value="Search">
+                                        <input type="submit" class="dt-button create-new btn btn-primary" value="Search">
                                     </div>
                                 </form>
                             </div>
@@ -54,8 +51,8 @@
                             <div class="card-header-elements ms-2">
 
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
                                         Actions
                                     </button>
                                     <ul class="dropdown-menu" style="">
@@ -77,11 +74,18 @@
                     </div>
                 </div>
 
-                <span style="margin: 2px; font-weight: bold;">
-                    Total Passport: {{ $total_passports }}
-                    <br>
-                    Result: {{ count($passports) }}
-                </span>
+
+                <div class="row">
+                    <div class="col-md-6 mr-6">
+                        <span class="badge bg-secondary">
+                            Total Passport: {{ $total_passports }}
+                        </span>
+                        <span class="badge bg-secondary">
+                            Result: {{ count($passports) }}
+                        </span>
+                    </div>
+                </div>
+
                 <div class="table-responsive text-nowrap rowheaders table-scroll" role="region"
                     aria-labelledby="HeadersCol" tabindex="0">
                     <table class="table table-bordered main-table">

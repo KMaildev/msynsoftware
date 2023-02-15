@@ -47,7 +47,7 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('contract.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="overseas_agencie_id" id="" class="form-control"
+                                        <select name="overseas_agencie_id" id="" class="form-control select2"
                                             style="width: 200px;">
                                             <option value="">
                                                 --Oversea Agency Company--
@@ -103,6 +103,12 @@
                                     Contract Date
                                 </th>
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Contract Remark
+                                </th>
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Sending
+                                </th>
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
@@ -138,6 +144,22 @@
                                         {{ $contract->contract_date }}
                                     </td>
 
+                                    <td style="text-align: center; font-weight: bold">
+                                        {{ $contract->remark ?? '' }}
+                                    </td>
+
+                                    <td style="text-align: center; font-weight: bold">
+                                        @if ($contract->sending_table)
+                                            <span class="badge bg-success">
+                                                Sending
+                                            </span>
+                                        @else
+                                            <span class="badge bg-danger">
+                                                Pending
+                                            </span>
+                                        @endif
+                                    </td>
+
                                     <td style="text-align: center;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
@@ -151,10 +173,14 @@
                                                     Contract Labours
                                                 </a>
 
-                                                <a class="dropdown-item"
-                                                    href="{{ route('sending_create', $contract->id) }}">
-                                                    Sending
-                                                </a>
+                                                @if ($contract->sending_table)
+                                                @else
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('sending_create', $contract->id) }}">
+                                                        Sending
+                                                    </a>
+                                                @endif
+
 
                                                 <a class="dropdown-item"
                                                     href="{{ route('contract.edit', $contract->id) }}">

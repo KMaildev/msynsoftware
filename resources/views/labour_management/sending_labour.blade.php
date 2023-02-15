@@ -12,9 +12,17 @@
                         </h5>
                     </div>
 
+
+                    <div class="col-md-12">
+                        <a href="{{ route('sending_labour_passport_export', $sending->id) }}" class="btn btn-success">
+                            Export Excel
+                        </a>
+                    </div>
+
+                    <br><br>
                     <span style="margin: 2px; font-weight: bold;">
                         Total Passport: {{ $total_passports }}
-                        <br>
+                        /
                         Result: {{ count($passports) }}
                     </span>
 

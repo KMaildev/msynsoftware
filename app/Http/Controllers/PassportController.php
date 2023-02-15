@@ -6,6 +6,7 @@ use App\Exports\ExportPassport;
 use App\Http\Requests\StorePassport;
 use App\Http\Requests\UpdatePassport;
 use App\Models\AgentList;
+use App\Models\Contract;
 use App\Models\Passport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,30 +19,38 @@ class PassportController extends Controller
 
         $total_passports = Passport::where('reject_status', NULL)
             ->count();
+
+        $total_male_passports = Passport::where('reject_status', NULL)
+            ->where('gender', 'male')
+            ->count();
+
         $passports = Passport::where('reject_status', NULL)
             ->paginate(100);
 
         if (request('search')) {
-            $passports = Passport::where(function ($query) {
-                $query->where('name', 'Like', '%' . request('search') . '%');
-                $query->orWhere('father_name', 'Like', '%' . request('search') . '%');
-                $query->orWhere('nrc', 'Like', '%' . request('search') . '%');
-                $query->orWhere('date_of_birth', 'Like', '%' . request('search') . '%');
-                $query->orWhere('passport', 'Like', '%' . request('search') . '%');
-                $query->orWhere('address', 'Like', '%' . request('search') . '%');
-                $query->orWhere('remark', 'Like', '%' . request('search') . '%');
-                $query->orWhere('phone', 'Like', '%' . request('search') . '%');
-            })->paginate(100);
+            $passports = Passport::where('reject_status', NULL)
+                ->where(function ($query) {
+                    $query->where('name', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('father_name', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('nrc', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('date_of_birth', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('passport', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('address', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('remark', 'Like', '%' . request('search') . '%');
+                    $query->orWhere('phone', 'Like', '%' . request('search') . '%');
+                })->paginate(100);
         }
 
         if (request('agent_list_id')) {
-            $passports = Passport::where(function ($query) {
-                $query->where('agent_list_id', request('agent_list_id'));
-            })->paginate(100);
+            $passports = Passport::where('reject_status', NULL)
+                ->where(function ($query) {
+                    $query->where('agent_list_id', request('agent_list_id'));
+                })->paginate(100);
         }
 
         if (request('from_date') && request('to_date')) {
-            $passports = Passport::whereBetween('join_date', [request('from_date'), request('to_date')])
+            $passports = Passport::where('reject_status', NULL)
+                ->whereBetween('join_date', [request('from_date'), request('to_date')])
                 ->paginate(100);
         }
 
@@ -185,4 +194,5 @@ class PassportController extends Controller
             ->get();
         return Excel::download(new ExportPassport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
+
 }

@@ -96,6 +96,14 @@ class SendingController extends Controller
         $sending->demand_id = $request->demand_id;
         $sending->contract_id = $request->contract_id;
         $sending->save();
+
+
+        $sending_id = $sending->id;
+        $contract_id = $request->contract_id;
+        LabourManagement::where('contract_id', $contract_id)
+            ->update([
+                'sending_id' => $sending_id
+            ]);
         return redirect()->back()->with('success', 'Process is completed.');
     }
 }

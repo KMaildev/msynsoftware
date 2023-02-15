@@ -47,7 +47,7 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('sending.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="overseas_agencie_id" id="" class="form-control"
+                                        <select name="overseas_agencie_id" id="" class="form-control select2"
                                             style="width: 200px;">
                                             <option value="">
                                                 --Oversea Agency Company--
@@ -95,6 +95,9 @@
                                     Sending Date
                                 </th>
                                 <th class="text-center text-white" style="background-color: #296166;">
+                                    Remark
+                                </th>
+                                <th class="text-center text-white" style="background-color: #296166;">
                                     Action
                                 </th>
                             </tr>
@@ -128,6 +131,10 @@
 
                                     <td style="text-align: center; font-weight: bold">
                                         {{ $sending->sending_date }}
+                                    </td>
+
+                                    <td style="text-align: center; font-weight: bold">
+                                        {{ $sending->remark ?? '' }}
                                     </td>
 
                                     <td style="text-align: center;">

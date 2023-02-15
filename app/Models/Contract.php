@@ -14,4 +14,9 @@ class Contract extends Model
     {
         return $this->belongsTo(Demand::class, 'demand_id', 'id');
     }
+
+    public function sending_table()
+    {
+        return $this->belongsTo(Sending::class, 'id', 'contract_id');
+    }
 }

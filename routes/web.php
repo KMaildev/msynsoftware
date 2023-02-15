@@ -23,7 +23,6 @@ Route::resource('agent_list', AgentListController::class);
 Route::resource('overseas_agent', OverseasAgentController::class);
 Route::get('overseas_agent_ajax/{id}', [OverseasAgentController::class, 'dependentAjax'])->name('overseas_agent_ajax');
 Route::resource('passport', PassportController::class);
-Route::get('passport_export', [PassportController::class, 'passportExport'])->name('passport_export');
 Route::get('/reject_passport/{id}', [PassportController::class, 'rejectPassport'])->name('reject_passport');
 Route::get('/reject_passport_list', [PassportController::class, 'rejectPassportList'])->name('reject_passport_list');
 Route::get('/cancel_reject_passport/{id}', [PassportController::class, 'cancelRejectPassport'])->name('cancel_reject_passport');
@@ -36,3 +35,8 @@ Route::resource('sending', SendingController::class);
 Route::get('sending_create/{id}', [SendingController::class, 'create'])->name('sending_create');
 Route::get('sending_labour/{id}', [LabourManagementController::class, 'sendingLabour'])->name('sending_labour');
 Route::post('remove_from_sending/{id}', [LabourManagementController::class, 'removeFromSending'])->name('remove_from_sending');
+
+
+Route::get('passport_export', [PassportController::class, 'passportExport'])->name('passport_export');
+Route::get('contract_labour_passport_export/{id}', [LabourManagementController::class, 'contractLabourPassportExport'])->name('contract_labour_passport_export');
+Route::get('sending_labour_passport_export/{id}', [LabourManagementController::class, 'sendingLabourPassportExport'])->name('sending_labour_passport_export');

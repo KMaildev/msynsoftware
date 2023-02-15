@@ -47,8 +47,8 @@
                             <div class="card-header-elements ms-2">
                                 <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
-                                        <select name="overseas_agencie_id"  class="form-control select2"
-                                            style="width: 200px;"  data-allow-clear="false">
+                                        <select name="overseas_agencie_id" class="form-control select2"
+                                            style="width: 200px;" data-allow-clear="false">
                                             <option value="">
                                                 --Oversea Agency Company--
                                             </option>
@@ -258,10 +258,18 @@
                                             @endphp
                                         </td>
 
-                                        <td colspan="2" style="text-align: center;">
+                                        <td style="text-align: center;">
                                             <span style="font-size: 11px; color: red;">
-                                                {{ $contract_list->remark ?? 0 }}
+                                                {{ $contract_list->remark ?? '' }}
                                             </span>
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            <a class=""
+                                                href="{{ route('labour_create_view', $contract_list->id) }}">
+                                                <i class="fa fa-users"></i>
+                                                Contract Labours
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -320,10 +328,17 @@
                                             @endphp
                                         </td>
 
-                                        <td colspan="2" style="text-align: center;">
+                                        <td style="text-align: center;">
                                             <span style="font-size: 11px; color: red;">
                                                 {{ $sendings_list->remark ?? 0 }}
                                             </span>
+                                        </td>
+
+                                        <td style="text-align: center;">
+                                            <a href="{{ route('sending_labour', $sendings_list->id) }}">
+                                                <i class="fa fa-users"></i>
+                                                Sending Labours
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

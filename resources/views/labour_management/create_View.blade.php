@@ -25,6 +25,11 @@
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="navs-within-card-active" role="tabpanel">
+                        <div class="col-md-12">
+                            <a href="{{ route('contract_labour_passport_export', $contract->id) }}" class="btn btn-success">
+                                Export Excel
+                            </a>
+                        </div>
                         @include('components.passport_lists')
                     </div>
 

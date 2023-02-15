@@ -18,4 +18,9 @@ class Passport extends Model
     {
         return $this->belongsTo(LabourManagement::class, 'passport', 'passport');
     }
+
+    public function labour_management()
+    {
+        return $this->belongsTo(LabourManagement::class, 'passport', 'passport');
+    }
 }

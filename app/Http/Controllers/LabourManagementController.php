@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportPassport;
 use App\Http\Requests\StoreLabourManagement;
 use App\Imports\ImportLabourManagement;
 use App\Models\Contract;
@@ -72,5 +73,29 @@ class LabourManagementController extends Controller
         $passport->sending_id = null;
         $passport->update();
         return redirect()->back()->with('success', 'Your processing has been completed.');
+    }
+
+
+    public function contractLabourPassportExport($id)
+    {
+        $passports = Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('contract_id', $id);
+            })->get();
+
+        return Excel::download(new ExportPassport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
+    }
+
+
+
+
+    public function sendingLabourPassportExport($id)
+    {
+        $passports = Passport::where('reject_status', NULL)
+            ->whereHas('labour_management_table', function ($q) use ($id) {
+                $q->where('sending_id', $id);
+            })->get();
+
+        return Excel::download(new ExportPassport($passports), 'passport_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

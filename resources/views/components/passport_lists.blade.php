@@ -1,6 +1,9 @@
+
+
+<br><br>
 <span style="margin: 2px; font-weight: bold;">
     Total Passport: {{ $total_passports }}
-    <br>
+    /
     Result: {{ count($passports) }}
 </span>
 <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"

@@ -21,7 +21,7 @@
                                 Oversea Company Name
                             </label>
                             <div class="col-md-9">
-                                <select class="form-control form-select" name="demand_id" id="demandId">
+                                <select class="form-control form-select select2" name="demand_id" id="demandId">
                                     <option value="0">
                                         --Select Oversea Company Name--
                                     </option>

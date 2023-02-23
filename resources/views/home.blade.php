@@ -4,6 +4,7 @@
         <div class="row">
             <h5>
                 Data Analysis Report
+                (Progress)
             </h5>
             <div class="col-lg-12 col-md-12 mb-4">
                 <div class="card">

@@ -40,6 +40,9 @@
                                     Phone</th>
                                 <th class="text-center text-white" style="background-color: #296166;">
                                     Address</th>
+                                <th class="text-center text-white" style="background-color: #296166;">
+                                    Total Worker
+                                </th>
                                 <th class="text-center text-white" style="background-color: #296166; width: 5%;">
                                     Action
                                 </th>
@@ -53,7 +56,7 @@
                                     </td>
 
                                     <td>
-                                        {{ strtoupper($agent_list->name ?? '') }} 
+                                        {{ strtoupper($agent_list->name ?? '') }}
                                     </td>
 
                                     <td>
@@ -66,6 +69,15 @@
 
                                     <td>
                                         {{ $agent_list->address }}
+                                    </td>
+
+                                    <td class="text-center">
+                                        <label class="btn btn-primary btn-sm" for="btnradio3">
+                                            <a class="text-white"
+                                                href="{{ route('passport.index', ['agent_list_id' => $agent_list->id]) }}">
+                                                Total: {{ $agent_list->passport_table_count ?? 0 }}
+                                            </a>
+                                        </label>
                                     </td>
 
                                     <td>

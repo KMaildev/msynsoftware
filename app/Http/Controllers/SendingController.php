@@ -106,4 +106,12 @@ class SendingController extends Controller
             ]);
         return redirect()->back()->with('success', 'Process is completed.');
     }
+
+
+    public function destroy($id)
+    {
+        $contract = Sending::findOrFail($id);
+        $contract->delete();
+        return redirect()->back()->with('success', 'Deleted successfully.');
+    }
 }

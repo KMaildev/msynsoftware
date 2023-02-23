@@ -22,6 +22,7 @@ class AgentListController extends Controller
             ->orWhere('email', 'LIKE', "%{$search}%")
             ->orWhere('phone', 'LIKE', "%{$search}%")
             ->orWhere('address', 'LIKE', "%{$search}%")
+            ->withCount('passport_table')
             ->get();
         return view('agent_list.index', compact('agent_lists'));
     }

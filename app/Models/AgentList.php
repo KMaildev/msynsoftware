@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AgentList extends Model
 {
     use HasFactory;
+
+    public function passport_table()
+    {
+        return $this->hasMany(Passport::class, 'agent_list_id', 'id');
+    }
 }

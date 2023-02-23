@@ -48,8 +48,8 @@
                                 <form action="{{ route('demand.index') }}" method="get" autocomplete="off">
                                     <div class="input-group">
                                         <select name="overseas_agencie_id" class="form-control select2"
-                                            style="width: 200px;" data-allow-clear="false">
-                                            <option value="">
+                                            style="width: 100% !important;" data-allow-clear="false">
+                                            <option value="0">
                                                 --Oversea Agency Company--
                                             </option>
                                             @foreach ($overseas_agencies as $overseas_agencie)
@@ -102,7 +102,7 @@
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
-                                    Femal
+                                    Female
                                 </th>
 
                                 <th class="text-center text-white" style="background-color: #296166;">
